@@ -34,7 +34,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'campaigns',
     'pages',
-    'users',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,7 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser' 
+AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend'] # new
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -143,7 +148,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ab7710850@gmail.com'
 EMAIL_HOST_PASSWORD = 'cr712345'
+
+AUTH_USER_MODEL = 'users.CustomUser' # new

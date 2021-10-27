@@ -2,13 +2,19 @@ from django.shortcuts import render
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from .forms import UserRegisterForm, UserUpdateForm
+from .forms import UserRegisterForm, LoginForm
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import time
+from django.contrib.auth import views as auth_views
+
+
+class LoginView(auth_views.LoginView):
+    form_class = LoginForm
+    template_name = 'users/login.html'
 
 # Create your views here.
 def register(request):

@@ -15,7 +15,7 @@ class ChoiceInLine(admin.TabularInline):
 
 
 class CampaignAdmin(admin.ModelAdmin):
-	fieldsets = [(None, {'fields': ['name','organization_name']}), ('Date Information', {
+	fieldsets = [(None, {'fields': ['organization_name']}), ('Date Information', {
 		'fields': ['pub_date'], 'classes': ['collapse']}), ]
 	inlines = [ChoiceInLine]
 
