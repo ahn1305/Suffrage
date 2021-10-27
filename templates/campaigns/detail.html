@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<a class ="btn btn-secondary btn-sm mb-3" href ="{% url 'campaigns:index' %}">Back To Campaigns</a>
+<h1 class ="text-center mb-3">{{ campaign.organization_name }}</h1>
+
+{% if error_message %}
+<p class ="alert alert-danger">
+	<strong>{{ error_message }}</strong>
+</p>
+
+{% endif %}
+
+<form action ="{% url 'campaigns:vote' campaign.id %}" method ="post">
+	{% csrf_token %}
+	{% for candidate in campaign.candidates_set.all %}
+	<div class ="form-check">
+		<input type ="radio" name ="choice" class ="form-check-input" id ="choice{{ forloop.counter }}"
+			value ="{{ candidate.id }}" />
+		<label for ="choice{{ forloop.counter }}">{{ candidate.candidate_list }}</label>
+	</div>
+	{% endfor %}
+	<input type ="submit" value ="Vote" class ="btn btn-success btn-lg btn-block mt-4" />
+</form>
+{% endblock %}

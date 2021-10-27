@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class ="mb-5 text-center">{{ campaign.organization_name }}</h1>
+{% comment %} 
+<ul class ="list-group mb-5">
+	{% for candidate in campaign.choice_set.all %}
+	<li class ="list-group-item">
+		{{ candidates.candidate_list }} <span class ="badge badge-success float-right">{{ candidate.votes }}
+			vote{{ candiate.votes | pluralize }}</span>
+	</li>
+	{% endfor %}
+</ul> {% endcomment %}
+<p>You have casted your vote successfully.</p>
+<a class ="btn btn-secondary" href ="{% url 'campaigns:index' %}">Back To Campaigns</a>
+{% comment %} <a class ="btn btn-dark" href ="{% url 'campaigns:detail' campaign.id %}">Vote again?</a> {% endcomment %}
+{% endblock %}
