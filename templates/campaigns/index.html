@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1 class ="text-center mb-3">Campaigns</h1>
-<p><b>Note: Once you have opened the poll you can't attend that pole again..</b></p>
+<h2 class ="text-center mb-3" style="border: 2px solid black; border-radius: 2px; padding: 5px;">Campaigns Available.</h2>
+<div class="alert alert-primary" role="alert">
+<p><b>Note: Once you have opened the poll you can't attend that poll again..</b></p>
+</div>
 {% if latest_candidate_list %}
 {% for campaign in latest_candidate_list %}
+<div class = "content-section">
 <div class ="card-mb-3">
 	<div class ="card-body">
-		<p class ="lead">{{ campaign.organization_name }}</p>
-		<a href ="{% url 'campaigns:detail' campaign.id %}" class ="btn btn-primary btn-sm">Vote Now</a>
+		<p>Campaign name: <b>{{ campaign.organization_name }}</b></p>
+		<b>Published On: {{ campaign.pub_date }}</b><br><br>
+		<a href ="{% url 'campaigns:detail' campaign.id %}" class ="btn btn-primary btn-sm"><b>Caste your vote</b></a>
 		{% comment %} <a href ="{% url 'campaigns:results' campaign.id %}" class ="btn btn-secondary btn-sm">Results</a> {% endcomment %}
 	</div>
+</div>
 </div>
 {% endfor %}
 {% else %}

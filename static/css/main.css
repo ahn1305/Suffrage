@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Mate&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
 
  body {
       margin-top: 5rem;
       color: #333333;
-      font-family: 'Mate', serif;
+      font-family: 'Zen Kurenaido', sans-serif;
     }
 
     p {
-        font-size:18px;
+        font-size:20px;
     }
 
     .bg-steel {
@@ -47,7 +47,7 @@
 a {
     cursor: pointer;
     text-decoration: none;
-    font-wi
+    font-size: medium;
 
 }
 

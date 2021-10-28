@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-<a class ="btn btn-secondary btn-sm mb-3" href ="{% url 'campaigns:index' %}">Back To Campaigns</a>
-<h1 class ="text-center mb-3">{{ campaign.organization_name }}</h1>
+<a class ="btn btn-secondary btn-sm mb-3" href ="{% url 'campaigns:index' %}"><b>Back To Campaigns</b></a>
+<h1 class ="text-center mb-3">Campaign Name: {{ campaign.organization_name }}</h1>
 
 {% if error_message %}
 <p class ="alert alert-danger">
@@ -15,14 +15,14 @@
 	{% for candidate in campaign.candidates_set.all %}
 	<div class="card">
   <div class="card-header">
-    Candidate Name 
+    <p><b>Candidate {{ forloop.counter }}</b></p>
 
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{ candidate.candidate_list }}</h5>
+    <h5 class="card-title">Name: <b>{{ candidate.candidate_list }}</b></h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 	
-    <button type ="submit"  name = "choice" id ="choice{{ forloop.counter }}"  value ="{{ candidate.id }}" class ="btn btn-success btn-lg btn-block mt-4">Vote now</button>
+    <button type ="submit"  name = "choice" id ="choice{{ forloop.counter }}"  value ="{{ candidate.id }}" class ="btn btn-success btn-lg btn-block mt-4"><b>Vote now</b></button>
   </div>
 </div>
 <br>
