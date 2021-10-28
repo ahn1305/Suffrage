@@ -2,15 +2,13 @@ from django.contrib import admin
 
 from .models import Campaign, Candidates
 
-
 admin.site.site_header = "Suffrage Admin"
 admin.site.site_title = "Suffrage Admin Area"
 admin.site.index_title = "Welcome to the Suffrage Admin Area"
 
 
 class ChoiceInLine(admin.TabularInline):
-	model = Candidates
-	
+	model = Candidates	
 	extra = 3
 
 

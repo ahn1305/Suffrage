@@ -1,4 +1,4 @@
-from django.http.response import Http404
+from django.http.response import Http404, HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -19,8 +19,19 @@ def index(request):
 
 
 def detail(request, campaign_id):
+	campaign = Campaign.objects.get(pk = campaign_id)
+	# with open("new_data.txt","r") as rn:
+	# 	data = rn.read()
+	# 	if str(campaign.id) + ',' + str(request.user.username) in data:
+	# 		return(HttpResponse("you have already attentded the pole"))
+
 	try:
 		campaign = Campaign.objects.get(pk = campaign_id)
+		# with open('new_data.txt','w') as n:
+		# 	cid = str(campaign.id) + ','
+		# 	user = request.user.username
+		# 	n.writelines([cid,user])
+		# 	n.close
 	except Campaign.DoesNotExist:
 		raise Http404("Campaign does not exist")
 	return render(request, 'campaigns/detail.html', {'campaign': campaign})
@@ -37,8 +48,17 @@ def results(request, campaign_id):
 @login_required
 def vote(request, campaign_id):
 	
+	
 	# print(request.POST['choice'])
 	campaign = get_object_or_404(Campaign, pk = campaign_id)
+
+	# with open("Attendies-List.txt","r") as check:
+	# 	lst = check.read()
+	# 	data = str(campaign.organization_name)+','+str(request.user.username)
+	# 	print(data)
+	# 	if data in lst:
+	# 		return(HttpResponse("You have already attended the pole"))
+
 	
 	try:
 		selected_choice = campaign.candidates_set.get(pk = request.POST['choice'])
@@ -52,8 +72,16 @@ def vote(request, campaign_id):
 
 		selected_choice.votes += 1
 		selected_choice.save()
+		# with open("Attendies-List.txt",'a') as a:
+		# 	name = str(campaign.organization_name) + ','
+		# 	user = str(request.user.username)
+		# 	a.writelines([name,user])
+		# 	a.write('\n')
+		# 	a.close()
 	
 		# Always return an HttpResponseRedirect after successfully dealing
 		# with POST data. This prevents data from being posted twice if a
 		# user hits the Back button.
 		return HttpResponseRedirect(reverse('campaigns:results', args =(campaign.id,)))
+
+

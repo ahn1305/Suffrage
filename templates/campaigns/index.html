@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1 class ="text-center mb-3">Campaigns</h1>
+<p><b>Note: Once you have opened the poll you can't attend that pole again..</b></p>
 {% if latest_candidate_list %}
 {% for campaign in latest_candidate_list %}
 <div class ="card-mb-3">
 	<div class ="card-body">
 		<p class ="lead">{{ campaign.organization_name }}</p>
-
 		<a href ="{% url 'campaigns:detail' campaign.id %}" class ="btn btn-primary btn-sm">Vote Now</a>
 		{% comment %} <a href ="{% url 'campaigns:results' campaign.id %}" class ="btn btn-secondary btn-sm">Results</a> {% endcomment %}
 	</div>
