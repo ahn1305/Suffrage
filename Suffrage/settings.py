@@ -139,7 +139,7 @@ STATIC_PATH,
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'campaigns:index'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -151,6 +151,18 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ab7710850@gmail.com'
-EMAIL_HOST_PASSWORD = 'cr712345'
+EMAIL_HOST_PASSWORD = 'ilmdcekcywupteyn'
+
+# EMAIL_BACKEND = 'django_ses.SESBackend'
+# DEFAULT_FROM_EMAIL = 'ahnashwin1305@gmail.com'
+
+
+# AWS_ACCESS_KEY_ID = 'AKIA6ALP4WRQ3VA5HDOG'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_SES_REGION_NAME = 'us-east-2'
+# AWS_SES_REGION_ENDPOINT = 'email.us-east-2.amazonaws.com'
+
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 
 AUTH_USER_MODEL = 'users.CustomUser' # new
