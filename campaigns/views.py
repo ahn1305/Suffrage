@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 
 from .models import Campaign, Candidates
@@ -12,7 +14,7 @@ from .models import Campaign, Candidates
 
 def index(request):
 	latest_candidate_list = Campaign.objects.order_by('-pub_date')[:5]
-	context = {'latest_candidate_list': latest_candidate_list}
+	context = {'latest_candidate_list': latest_candidate_list,}
 	return render(request, 'campaigns/index.html', context)
 
 # Show specific question and choices
@@ -23,11 +25,12 @@ def detail(request, campaign_id):
 	# with open("new_data.txt","r") as rn:
 	# 	data = rn.read()
 	# 	if str(campaign.id) + ',' + str(request.user.username) in data:
-	# 		return(HttpResponse("you have already attentded the pole"))
+	# 		messages.warning(request,"you have already attended the pole bitch")
+	# 		return redirect(reverse("campaigns:index"))
 
 	try:
 		campaign = Campaign.objects.get(pk = campaign_id)
-		# with open('new_data.txt','w') as n:
+		# with open('new_data.txt','a') as n:
 		# 	cid = str(campaign.id) + ','
 		# 	user = request.user.username
 		# 	n.writelines([cid,user])
